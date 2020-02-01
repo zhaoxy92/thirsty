@@ -1,0 +1,420 @@
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THIRSTY: A Teachable and Domain Robust Semantic Information Extraction System</title>
+<!-- <script src='https://code.jquery.com/jquery-2.2.0.min.js'></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script type="text/javascript" src="MathJax-2.7.0/MathJax.js?config=TeX-AMS_HTML-full"></script>!-->
+
+<style>
+@media screen and (max-device-width: 480px){
+  body{
+        -webkit-text-size-adjust: 100%;
+                }
+                        }
+body
+{
+    font-family : Arial;
+    font-size : 16px;
+    background-color : #f2f2f2;
+}
+.content
+{
+    width : 800px;
+    padding : 25px 25px;
+    margin : 25px auto;
+    background-color : #fff;
+    border-radius: 20px; 
+    border : #e3e1e4 1px solid;
+}
+.content-title {
+    color : #000;
+    border : none;
+    margin-top : 25px;
+    padding-bottom : 0;
+    margin-bottom : 0;
+    background-color : inherit;
+}
+
+.content-names {
+    padding : 10px;
+    padding-top : 0;
+    border : none;
+    box-shadow : none;
+    background-color : inherit;
+}
+
+a, a:visited
+{
+    color : #002a6d;
+    color : blue;
+}
+
+#authors
+{
+    text-align : center;
+}
+
+#conference
+{
+    text-align : center;
+    font-style : italic;
+}
+
+#authors span
+{
+    margin : 0 10px;
+}
+
+h1
+{
+    text-align : center;
+    font-family : Arial;
+    font-size : 40px;
+}
+h4
+{
+    text-align : center;
+    font-family : Arial;
+    font-size : 20px;
+	margin : 0px;
+}
+h2 {
+    font-family : Arial;
+    font-size : 30px;
+    padding : 0; margin : 10px;
+}
+
+h3 {
+    font-family : Arial;
+    font-size : 20px;
+    padding : 0; margin : 10px;
+}
+
+p {
+    line-height : 130%;
+    margin : 10px;
+}
+pre {
+    line-height : 130%;
+    margin : 10px;
+    padding : 20px;
+    background-color : #2d2d2d;
+    color : white;
+    border-radius : 5px;
+}
+
+li {
+    margin : 10px 0;
+}
+
+.samples {
+    float : left;
+    width : 50%;
+    text-align : center;
+}
+.cond {
+    float : left;
+    margin : 0 40px;
+}
+.cond-container {
+    width : 700px;
+    margin : 0 auto;
+    text-align : center;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="content content-title">
+<!-- <h1>NeuroNER<BR/>Easy-to-Use Named-Entity Recognition Tool based on Neural Networks</h1> !-->
+<!-- <h1>NeuroNER<BR/>A Named-Entity Recognition Tool based on Neural Networks and easy to use</h1> -->
+<h1>THIRSTY</h1><h4>A Teachable and Domain Robust Semantic Information Extraction System</h4>
+
+
+</div>
+
+
+<div class="content">
+<h2>What is THIRSTY?</h2>
+
+<p>
+THIRSTY is an information extraction (IE) system that allows users to easily and quickly build an IE system of good performance without any writing any codes. THIRSTY uses experimental results to demonstrate effectiveness in semantic entity recognition and relation classification tasks in medical and scientic domains.
+
+<figure>
+  <p><img src="thirsty-flow.png" alt="THIRSTY EntityRecognition engine" style="width:100%">
+  <figcaption style="text-align: center">Figure 1. The workflow of THIRSTY</figcaption>
+</figure>
+
+<BR/><BR/>
+
+Without manual annotation, THIRSTY takes advantage of experts' knowledge directly
+to obtain weakly labeled data and then train an IE model using the 
+generated weak labels. 
+The basic usage flow is shown in Figure 1. First, domain experts input 
+their knowledge, in the form of functions, that are useful to identify specific entities or relations.
+Second, the system will automatically convert their knowledge descriptions 
+into labeling functions, and then collect labels by 
+applying the labeling functions on the data. Since the labels generated 
+by different labeling functions could be conflict and noisy. The system 
+uses a generative model to clean and aggregate the 
+weakly generated training labels. Finally, the automatically labeled  
+data will be used to train final prediction entity recognition or 
+relation extraction models. 
+</p>
+
+<br clear="both">
+</div>
+
+
+
+<div class="content">
+<h2>How is THIRSTY built?</h2>
+
+<p>
+As shown in Figure 2, THIRSTY has the following components: 
+
+<ul>
+  <li>
+    <b>System configuration component</b> that uses spaCy to preprocessthe text documents.
+  </li>
+  <li>
+    <b>Knowledge input and management component</b>
+    that provides Example, Lexical, and Contextual knowledge types for tasks.
+  </li>
+  <li>
+    <b>Knowledge2LF converter</b>
+    that converts knowledge descriptions to labeling functions and generates weak labels
+  </li>
+  <li>
+    <b>Knowledge analysis component</b>
+    that allows users to investigate knowledge properties and mutual relations.
+  </li>
+  <li>
+    <b>Builtin ER and RE models</b>
+    that allows users to easily train models based on the generated weak training data.
+  </li>
+  <li>
+    <b>the User feedback collector and active learning component</b>
+    that allows user to actively choose training samples to enhance the model performance.
+  </li>
+
+   
+</ul>
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<figure>
+  <p><img src="thirsty-architecture.png" alt="THIRSTY Architecture" style="width:100%">
+  <figcaption style="text-align: center">Figure 2. The architecture of THIRSTY</figcaption>
+</figure>
+
+<BR/><BR/>
+
+</p>
+
+<br clear="both">
+</div>
+
+
+
+<div class="content">
+
+
+<h2>How does THIRSTY work?</h2> 
+
+<p>
+THIRSTY can perform entity recognition:<BR/><BR/>
+<img src="EntityRecognition.png" alt="THIRSTY EntityRecognition engine" style="width:780px">
+
+<BR/><BR/>
+
+THIRSTY can perform entity recognition:<BR/><BR/>
+<img src="RelationClassification.png" alt="THIRSTY RelationClassification engine" style="width:780px">
+
+
+<BR/><BR/>
+
+NeuroNER presents the following advantages over the existing NER systems:
+<ul>
+  <li>Leverages the state-of-the-art prediction capabilities of neural networks (a.k.a. "deep learning")</li>
+  <!-- <li>Cross-platform, open source and freely available</li> !-->
+  <li>Enables the users to create or modify annotations for a new or existing corpus</li>
+  <li>Is cross-platform, open source, freely available, and straightforward to use</li>
+</ul>
+
+</p>
+
+<br clear="both">
+
+</div>
+
+
+
+<div class="content">
+<!-- <h2>Where can I get NeuroNER?</h2>!-->
+<h2>Where can NeuroNER be downloaded?</h2>
+<p>NeuroNER runs on Linux, Mac OS X, and Microsoft Windows. It requires Python 3.5, TensorFlow 1.0, and scikit-learn. NeuroNER's code can be found here: <a href="https://github.com/Franck-Dernoncourt/NeuroNER">https://github.com/Franck-Dernoncourt/NeuroNER</a>
+</p>
+<br clear="both">
+</div>
+
+
+<div class="content">
+
+
+
+<!-- <h2>How do I use NeuroNER?</h2>!-->
+<h2>How to use NeuroNER?</h2>
+
+<p>
+The diagram below presents an overview of NeuroNER. NeuroNER can be used as follows:
+
+<ol>
+  <li>Train the neural network that performs the NER. During the training, NeuroNER allows to monitor the network</li>
+  <li>Evaluate the quality of the predictions made by NeuroNER. The performance metrics can be calculated and plotted by comparing the predicted labels with the gold labels. The evaluation can be done at the same time as the training if the test set is provided along with the training and validation sets, or separately after the training or using a pre-trained model</li>
+  <li>Deploy NeuroNER for production use: NeuroNER labels the deployment set, i.e. any new text without gold labels.</li>
+</ol>
+
+
+<img src="system_v5.png" alt="NeuroNER overview" style="width:780px">
+
+</p>
+
+<br clear="both">
+
+</div>
+
+
+<div class="content">
+
+
+
+<h2>How does the NeuroNER engine work?</h2>
+
+<p>
+The NeuroNER engine is based on artificial neural networks (ANNs). Specifically, it relies on a variant of recurrent neural network (RNN) called long short-term memory (LSTM). 
+The NER engine's ANN contains three layers:
+<ol>
+  <li>Character-enhanced token-embedding layer,</li>
+  <li>Label prediction layer,</li>
+  <li>Label sequence optimization layer.</li>
+</ol>
+
+
+The following diagram presents the architecture of the ANN used in the NeuroNER engine.
+
+<img src="NeuroNERengine_with_caption_no_figure.png" alt="NeuroNER engine" style="width:780px">
+
+
+<!-- When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$!-->
+<!-- https://cdn.mathjax.org/mathjax/latest/test/examples.html !-->
+</p>
+
+<br clear="both">
+
+</div>
+
+
+
+
+
+<div class="content">
+
+
+
+<!-- <h2>How can I install NeuroNER?</h2><h2><a name="C4">How to install NeuroNER?</a></h2>!-->
+<a name="videos"></a>
+<h2 id="C4">How to install NeuroNER?</h2>
+
+<p>
+ 
+The GitHub repository explains the installation instructions. Here is a demo showing how easy it is when using the installation script on Ubuntu: the script installs everything you need and start training on the CoNLL-2003 dataset. After a few training epochs, one obtains state-of-the-art results.<BR/><BR/>
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/pByoBfB9_bc" frameborder="0" allowfullscreen></iframe></center>
+
+
+</p>
+
+<br clear="both">
+
+</div>
+
+
+<div class="content">
+<h2>Using NeuroNER with BRAT</h2>
+
+<p>
+ 
+NeuroNER integrates with BRAT so that the user may easily view, amend or create annotations:
+<BR/><BR/>
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/NFQ2snt4ujE" frameborder="0" allowfullscreen></iframe></center>
+
+</p>
+
+<br clear="both">
+
+</div>
+
+
+<div class="content">
+<h2>Using NeuroNER with TensorBoard</h2>
+
+<p>
+ 
+In addition to the plots generated by NeuroNER, one can use TensorBoard to analyze NeuroNER network and results in real-time or retrospectively:
+ <BR/><BR/>
+
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/BmRYkxumDvU" frameborder="0" allowfullscreen></iframe></center>
+<BR/><BR/>
+The user may also view the NeuroNER engine interactively:
+<BR/><BR/>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/0x9AOUF-lHo" frameborder="0" allowfullscreen></iframe></center>
+
+</p>
+
+<br clear="both">
+
+</div>
+
+
+
+<div class="content">
+<h2>Trained models</h2>
+<p>
+
+Trained models as well as their performances can be found at:<BR/><a href="https://github.com/Franck-Dernoncourt/NeuroNER/blob/master/trained_models/performances.md">https://github.com/Franck-Dernoncourt/NeuroNER/blob/master/trained_models/performances.md</a>
+
+</p>
+<br clear="both">
+
+</div>
+
+
+
+
+</body>
+</html>
