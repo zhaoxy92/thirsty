@@ -214,27 +214,12 @@ As shown in Figure 2, THIRSTY has the following components:
    
 </ul>
 
-
-
- 
-
- 
-
- 
-
- 
-
-
-
 <figure>
   <p><img src="thirsty-architecture.png" alt="THIRSTY Architecture" style="width:100%">
   <figcaption style="text-align: center">Figure 2. The architecture of THIRSTY</figcaption>
 </figure>
-
 <BR/><BR/>
-
 </p>
-
 <br clear="both">
 </div>
 
@@ -244,177 +229,22 @@ As shown in Figure 2, THIRSTY has the following components:
 
 
 <h2>How does THIRSTY work?</h2> 
-
 <p>
-THIRSTY can perform entity recognition:<BR/><BR/>
-<img src="EntityRecognition.png" alt="THIRSTY EntityRecognition engine" style="width:780px">
-
-<BR/><BR/>
-
-THIRSTY can perform entity recognition:<BR/><BR/>
-<img src="RelationClassification.png" alt="THIRSTY RelationClassification engine" style="width:780px">
-
-
-<BR/><BR/>
-
-NeuroNER presents the following advantages over the existing NER systems:
-<ul>
-  <li>Leverages the state-of-the-art prediction capabilities of neural networks (a.k.a. "deep learning")</li>
-  <!-- <li>Cross-platform, open source and freely available</li> !-->
-  <li>Enables the users to create or modify annotations for a new or existing corpus</li>
-  <li>Is cross-platform, open source, freely available, and straightforward to use</li>
-</ul>
-
-</p>
-
-<br clear="both">
-
-</div>
-
-
-
-<div class="content">
-<!-- <h2>Where can I get NeuroNER?</h2>!-->
-<h2>Where can NeuroNER be downloaded?</h2>
-<p>NeuroNER runs on Linux, Mac OS X, and Microsoft Windows. It requires Python 3.5, TensorFlow 1.0, and scikit-learn. NeuroNER's code can be found here: <a href="https://github.com/Franck-Dernoncourt/NeuroNER">https://github.com/Franck-Dernoncourt/NeuroNER</a>
+To get more informatio about how THIRSTY works and how to use it, please refer to the following video.
+<iframe width="100%" height="500" src="https://www.youtube.com/embed/H2bVxZCgQkA"></iframe>
 </p>
 <br clear="both">
 </div>
 
 
 <div class="content">
-
-
-
-<!-- <h2>How do I use NeuroNER?</h2>!-->
-<h2>How to use NeuroNER?</h2>
-
-<p>
-The diagram below presents an overview of NeuroNER. NeuroNER can be used as follows:
-
-<ol>
-  <li>Train the neural network that performs the NER. During the training, NeuroNER allows to monitor the network</li>
-  <li>Evaluate the quality of the predictions made by NeuroNER. The performance metrics can be calculated and plotted by comparing the predicted labels with the gold labels. The evaluation can be done at the same time as the training if the test set is provided along with the training and validation sets, or separately after the training or using a pre-trained model</li>
-  <li>Deploy NeuroNER for production use: NeuroNER labels the deployment set, i.e. any new text without gold labels.</li>
-</ol>
-
-
-<img src="system_v5.png" alt="NeuroNER overview" style="width:780px">
-
-</p>
-
+<h2>THIRSTY Download and Installation</h2>
+<p>The download and installation information of THIRST will released soon.</p>
 <br clear="both">
-
 </div>
-
-
-<div class="content">
-
-
-
-<h2>How does the NeuroNER engine work?</h2>
-
-<p>
-The NeuroNER engine is based on artificial neural networks (ANNs). Specifically, it relies on a variant of recurrent neural network (RNN) called long short-term memory (LSTM). 
-The NER engine's ANN contains three layers:
-<ol>
-  <li>Character-enhanced token-embedding layer,</li>
-  <li>Label prediction layer,</li>
-  <li>Label sequence optimization layer.</li>
-</ol>
-
-
-The following diagram presents the architecture of the ANN used in the NeuroNER engine.
-
-<img src="NeuroNERengine_with_caption_no_figure.png" alt="NeuroNER engine" style="width:780px">
-
-
-<!-- When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$!-->
-<!-- https://cdn.mathjax.org/mathjax/latest/test/examples.html !-->
-</p>
-
-<br clear="both">
-
-</div>
-
-
-
-
-
-<div class="content">
-
-
-
-<!-- <h2>How can I install NeuroNER?</h2><h2><a name="C4">How to install NeuroNER?</a></h2>!-->
-<a name="videos"></a>
-<h2 id="C4">How to install NeuroNER?</h2>
-
-<p>
- 
-The GitHub repository explains the installation instructions. Here is a demo showing how easy it is when using the installation script on Ubuntu: the script installs everything you need and start training on the CoNLL-2003 dataset. After a few training epochs, one obtains state-of-the-art results.<BR/><BR/>
-
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/pByoBfB9_bc" frameborder="0" allowfullscreen></iframe></center>
-
-
-</p>
-
-<br clear="both">
-
-</div>
-
-
-<div class="content">
-<h2>Using NeuroNER with BRAT</h2>
-
-<p>
- 
-NeuroNER integrates with BRAT so that the user may easily view, amend or create annotations:
-<BR/><BR/>
-
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/NFQ2snt4ujE" frameborder="0" allowfullscreen></iframe></center>
-
-</p>
-
-<br clear="both">
-
-</div>
-
-
-<div class="content">
-<h2>Using NeuroNER with TensorBoard</h2>
-
-<p>
- 
-In addition to the plots generated by NeuroNER, one can use TensorBoard to analyze NeuroNER network and results in real-time or retrospectively:
- <BR/><BR/>
-
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/BmRYkxumDvU" frameborder="0" allowfullscreen></iframe></center>
-<BR/><BR/>
-The user may also view the NeuroNER engine interactively:
-<BR/><BR/>
-<center><iframe width="560" height="315" src="https://www.youtube.com/embed/0x9AOUF-lHo" frameborder="0" allowfullscreen></iframe></center>
-
-</p>
-
-<br clear="both">
-
-</div>
-
-
-
-<div class="content">
-<h2>Trained models</h2>
-<p>
-
-Trained models as well as their performances can be found at:<BR/><a href="https://github.com/Franck-Dernoncourt/NeuroNER/blob/master/trained_models/performances.md">https://github.com/Franck-Dernoncourt/NeuroNER/blob/master/trained_models/performances.md</a>
-
-</p>
-<br clear="both">
-
-</div>
-
 
 
 
 </body>
 </html>
+
